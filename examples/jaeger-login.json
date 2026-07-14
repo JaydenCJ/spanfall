@@ -1,0 +1,85 @@
+{
+  "data": [
+    {
+      "traceID": "c3d4e5f6a7b8091a2b3c4d5e6f708192",
+      "spans": [
+        {
+          "traceID": "c3d4e5f6a7b8091a2b3c4d5e6f708192",
+          "spanID": "0102030405060708",
+          "operationName": "POST /login",
+          "references": [],
+          "startTime": 1771104600000000,
+          "duration": 95000,
+          "tags": [
+            { "key": "span.kind", "type": "string", "value": "server" },
+            { "key": "http.method", "type": "string", "value": "POST" },
+            { "key": "http.status_code", "type": "int64", "value": 200 }
+          ],
+          "processID": "p1"
+        },
+        {
+          "traceID": "c3d4e5f6a7b8091a2b3c4d5e6f708192",
+          "spanID": "1112131415161718",
+          "operationName": "token.issue",
+          "references": [
+            { "refType": "CHILD_OF", "traceID": "c3d4e5f6a7b8091a2b3c4d5e6f708192", "spanID": "0102030405060708" }
+          ],
+          "startTime": 1771104600010000,
+          "duration": 70000,
+          "tags": [
+            { "key": "span.kind", "type": "string", "value": "server" },
+            { "key": "otel.status_code", "type": "string", "value": "OK" }
+          ],
+          "processID": "p2"
+        },
+        {
+          "traceID": "c3d4e5f6a7b8091a2b3c4d5e6f708192",
+          "spanID": "2122232425262728",
+          "operationName": "SELECT users",
+          "references": [
+            { "refType": "CHILD_OF", "traceID": "c3d4e5f6a7b8091a2b3c4d5e6f708192", "spanID": "1112131415161718" }
+          ],
+          "startTime": 1771104600015000,
+          "duration": 45000,
+          "tags": [
+            { "key": "span.kind", "type": "string", "value": "client" },
+            { "key": "db.type", "type": "string", "value": "sql" }
+          ],
+          "processID": "p2"
+        },
+        {
+          "traceID": "c3d4e5f6a7b8091a2b3c4d5e6f708192",
+          "spanID": "3132333435363738",
+          "operationName": "cache.set session",
+          "references": [
+            { "refType": "CHILD_OF", "traceID": "c3d4e5f6a7b8091a2b3c4d5e6f708192", "spanID": "1112131415161718" }
+          ],
+          "startTime": 1771104600062000,
+          "duration": 8000,
+          "tags": [
+            { "key": "span.kind", "type": "string", "value": "client" }
+          ],
+          "processID": "p2"
+        },
+        {
+          "traceID": "c3d4e5f6a7b8091a2b3c4d5e6f708192",
+          "spanID": "4142434445464748",
+          "operationName": "render response",
+          "references": [
+            { "refType": "CHILD_OF", "traceID": "c3d4e5f6a7b8091a2b3c4d5e6f708192", "spanID": "0102030405060708" }
+          ],
+          "startTime": 1771104600082000,
+          "duration": 11000,
+          "tags": [
+            { "key": "span.kind", "type": "string", "value": "internal" }
+          ],
+          "processID": "p1"
+        }
+      ],
+      "processes": {
+        "p1": { "serviceName": "web" },
+        "p2": { "serviceName": "auth" }
+      }
+    }
+  ]
+}

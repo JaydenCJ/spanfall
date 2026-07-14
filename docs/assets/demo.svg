@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="852" height="441" viewBox="0 0 852 441" font-family="Menlo, Consolas, monospace" font-size="13" xml:space="preserve">
+  <rect width="852" height="441" rx="10" fill="#101418"/>
+  <circle cx="24" cy="22" r="6" fill="#ff5f56"/>
+  <circle cx="44" cy="22" r="6" fill="#ffbd2e"/>
+  <circle cx="64" cy="22" r="6" fill="#27c93f"/>
+  <text x="426" y="27" fill="#8b949e" text-anchor="middle" font-size="12">spanfall — trace waterfalls in your terminal</text>
+  <g fill="#c9d1d9">
+    <text x="24" y="45"><tspan fill="#7ee787">$</tspan> spanfall render checkout-trace.json</text>
+    <text x="24" y="66" fill="#79c0ff">trace 4bf92f3577b34da6a3ce929d0e0e4736 · GET /api/checkout · 187.5ms · 12 spans · 4 services · 1 error</text>
+    <text x="24" y="108" fill="#8b949e">span                     service   duration   0 ··········································· 187.5ms</text>
+    <text x="24" y="129">GET /api/checkout        gateway    187.5ms   <tspan fill="#f778ba">██████████████████████████████████████████████████████</tspan></text>
+    <text x="24" y="150">├─ auth.verify           gateway      8.2ms   <tspan fill="#f778ba">██</tspan></text>
+    <text x="24" y="171">├─ price.quote           pricing     44.0ms      <tspan fill="#f778ba">█████████████</tspan></text>
+    <text x="24" y="192">│  └─ GET /rates         pricing     39.1ms       <tspan fill="#f778ba">███████████</tspan></text>
+    <text x="24" y="213">├─ cart.load             cart        31.4ms      <tspan fill="#484f58">░░░░░░░░░</tspan></text>
+    <text x="24" y="234">│  ├─ cache.get          cart         1.7ms      <tspan fill="#484f58">░</tspan></text>
+    <text x="24" y="255">│  └─ SELECT cart_items  cart        24.9ms       <tspan fill="#484f58">░░░░░░░</tspan></text>
+    <text x="24" y="276">└─ payment.charge        payments   130.6ms                   <tspan fill="#f778ba">██████████████████████████████████████</tspan></text>
+    <text x="24" y="297">   ├─ fraud.screen       payments    21.3ms                   <tspan fill="#f778ba">██████</tspan></text>
+    <text x="24" y="318">   ├─ card.authorize     payments    42.0ms <tspan fill="#ff7b72">✗</tspan>                       <tspan fill="#f778ba">████████████</tspan></text>
+    <text x="24" y="339">   ├─ card.authorize     payments    49.2ms                                      <tspan fill="#f778ba">██████████████</tspan></text>
+    <text x="24" y="360">   └─ ledger.write       payments    14.0ms                                                    <tspan fill="#f778ba">████</tspan></text>
+    <text x="24" y="402" fill="#8b949e">critical path: 9 of 12 spans (<tspan fill="#f778ba">█</tspan>) · run 'spanfall critical' for the breakdown</text>
+  </g>
+</svg>
